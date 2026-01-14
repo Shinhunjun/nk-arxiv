@@ -1,0 +1,312 @@
+%==============================================================================
+% APPENDIX
+%==============================================================================
+% \newpage
+\appendix
+\section*{Appendix}
+\setcounter{secnumdepth}{2}
+\section{LLM Classification Prompt}
+\label{app:llm_prompt}
+
+The classification was performed using GPT-4o-mini with the following system and user prompts.
+
+\subsection*{System Prompt}
+% \begin{quote}
+You are a political science researcher analyzing media framing of international relations. Apply the Critical Classification Rules FIRST before classifying.
+% \end{quote}
+
+\subsection*{User Prompt}
+You are an international relations researcher. Classify the following Reddit post into ONE of 5 framing categories.
+
+\subsubsection*{Critical Classification Rules (Apply First!)}
+These rules resolve ambiguities and edge cases.
+
+\begin{enumerate}
+    \item \textbf{No Action = NEUTRAL}: If the post is a question, hypothesis, speculation, or factual report without explicit government action, classify as NEUTRAL.
+    \item \textbf{Verbal vs. Physical Actions}: If a state is \textbf{only verbally criticizing or warning} another state (not taking physical/military action), classify as DIPLOMACY, not THREAT.
+    \item \textbf{Individual Harm = HUMANITARIAN}: If the harm is to \textbf{specific individuals} (protesters, defectors, refugees, civilians), classify as HUMANITARIAN, not THREAT.
+    \item \textbf{Conflicting Frames = NEUTRAL}: When DIPLOMACY and THREAT (or other frames) are equally present and competing, classify as NEUTRAL.
+    \item \textbf{Domestic Politics = NEUTRAL}: Commentary on domestic political issues, even if mentioning foreign countries, is NEUTRAL.
+\end{enumerate}
+
+\subsubsection*{Classification Criteria}
+
+\paragraph{1. THREAT (Military Tension/Conflict)}
+Physical military actions that increase conflict possibility.
+\begin{itemize}
+    \item \textbf{Include}: Military actions (missile launches, nuclear tests, military exercises, shows of force), arms buildup, military threats with NO dialogue possibility (ultimatums), cyberattacks on military/government infrastructure.
+    \item \textbf{Exclude (classify as DIPLOMACY instead)}: Verbal warnings with possibility of dialogue remaining, one state verbally criticizing another's actions, requests to stop military activities.
+\end{itemize}
+
+\paragraph{2. DIPLOMACY (Diplomatic Interaction)}
+Relationship adjustment through dialogue, negotiation, or verbal pressure.
+\begin{itemize}
+    \item \textbf{Include}: Summit meetings, diplomatic negotiations, bilateral/multilateral talks, agreements, attempts to improve/normalize relations, sanctions relief, verbal criticism/warnings between states, diplomatic pressure.
+    \item \textbf{Note}: Even if a summit fails, focus on the summit itself $\rightarrow$ DIPLOMACY.
+\end{itemize}
+
+\paragraph{3. ECONOMIC (Economic Measures)}
+Pressure or cooperation through economic means.
+\begin{itemize}
+    \item \textbf{Include}: Imposition/strengthening of economic sanctions, sanctions evasion activities, trade measures (tariffs), economic cooperation/investment.
+    \item \textbf{Exclude}: Arms deals $\rightarrow$ THREAT, if main focus is diplomatic action $\rightarrow$ DIPLOMACY.
+\end{itemize}
+
+\paragraph{4. HUMANITARIAN (Humanitarian Issues)}
+Human rights and individual/civilian harm.
+\begin{itemize}
+    \item \textbf{Include}: Human rights violations, refugee issues, humanitarian assistance/aid, war crimes, harm to individuals (protesters, defectors, refugees, civilians), cyberattacks targeting civilians.
+\end{itemize}
+
+\paragraph{5. NEUTRAL (Neutral Information)}
+Cases not fitting specific frames.
+\begin{itemize}
+    \item \textbf{Include}: Simple factual reporting, analysis, domestic politics, questions/hypotheticals, description without explicit government action, when multiple frames are equally present.
+\end{itemize}
+
+\section{Parallel Trends Validation}
+\label{app:parallel_trends}
+
+Tables~\ref{tab:app_pt_sentiment} and~\ref{tab:app_pt_framing} present the full parallel trends test results for sentiment and framing outcomes, respectively. For sentiment, all three control groups satisfied parallel trends across both comparisons ($p > 0.05$). For framing, China and Iran satisfied parallel trends in all comparisons, while Russia exhibited a significant violation for P1$\rightarrow$P2 ($p = 0.01$), likely due to the Mueller investigation's confounding effect on threat-oriented discourse during this period. Consequently, Russia is excluded from framing analyses for the Singapore Summit effect.
+
+\begin{table}[h]
+\centering
+\caption{Post Parallel Test Results (Sentiment)}
+\small
+\begin{tabular}{llcc}
+\toprule
+\textbf{Comparison} & \textbf{Control} & \textbf{P-value} & \textbf{Trends} \\
+\midrule
+P1$\rightarrow$P2 & China & 0.99 & Valid \\
+P1$\rightarrow$P2 & Iran & 0.73 & Valid \\
+P1$\rightarrow$P2 & Russia & 0.14 & Valid \\
+\addlinespace
+P2$\rightarrow$P3 & China & 0.71 & Valid \\
+P2$\rightarrow$P3 & Iran & 0.64 & Valid \\
+P2$\rightarrow$P3 & Russia & 0.81 & Valid \\
+\bottomrule
+\end{tabular}
+\label{tab:app_pt_sentiment}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Post Parallel Test Results (Framing)}
+\small
+\begin{tabular}{llcc}
+\toprule
+\textbf{Comparison} & \textbf{Control} & \textbf{P-value} & \textbf{Trends} \\
+\midrule
+P1$\rightarrow$P2 & China & 0.06 & Valid \\
+P1$\rightarrow$P2 & Iran & 0.69 & Valid \\
+P1$\rightarrow$P2 & Russia & 0.01 & Invalid \\
+\addlinespace
+P2$\rightarrow$P3 & China & 0.40 & Valid \\
+P2$\rightarrow$P3 & Iran & 0.76 & Valid \\
+P2$\rightarrow$P3 & Russia & 0.30 & Valid \\
+\bottomrule
+\end{tabular}
+\label{tab:app_pt_framing}
+\end{table}
+
+
+\section{Robustness Check: Alternative Framing Scale}
+\label{app:robustness}
+
+To verify that our main findings are not artifacts of the framing scale construction, we conducted a robustness check using an alternative specification that treats ECONOMIC framing as partially coercive (ECONOMIC = $-1$) rather than neutral (ECONOMIC = $0$).
+This alternative reflects a view commonly adopted in international relations scholarship, where economic sanctions are conceptualized as coercive instruments situated between military threat and diplomatic engagement.
+
+
+\begin{table}[h!]
+\centering
+\caption{DiD Estimates: Original vs. Alternative Framing Scale}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{llcc}
+\toprule
+\textbf{Event} & \textbf{Control} & \textbf{Original} & \textbf{Alternative} \\
+ & & (ECON=0) & (ECON=$-1$) \\
+\midrule
+Singapore & China & +0.34** & +0.37** \\
+(P1$\rightarrow$P2) & Iran & +0.39 & +0.77** \\
+\midrule
+Hanoi & China & -0.34 & -0.23 \\
+(P2$\rightarrow$P3) & Iran & -0.23 & -0.22 \\
+ & Russia & -0.35 & -0.36 \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize * $p<0.05$, ** $p<0.01$, *** $p<0.001$} \\
+\end{tabular}
+}
+\label{tab:app_robustness}
+\end{table}
+
+The alternative specification produces similar directional effects across all comparisons, with several estimates increasing in magnitude under the alternative scaling.
+Notably, the Singapore/Iran estimate becomes larger and reaches statistical significance under the alternative specification (+0.39 $\rightarrow$ +0.77**), indicating that the baseline coding does not inflate diplomatic effects.
+Taken together, these results suggest that our main specification (ECONOMIC = $0$) yields more conservative effect size estimates, while preserving both the direction and substantive interpretation of the findings.
+
+
+\section{Audience Response Analysis (RQ3)}
+\label{app:audience_response}
+
+This appendix provides detailed statistics and results from the supplementary analysis of audience responses (comments), which serves to validate the propagation of framing effects beyond agenda-setting posts.
+
+
+
+\subsection{Parallel Trends Verification}
+To validate the DiD design for audience responses, we verified the parallel trends assumption for both sentiment and framing (Tables~\ref{tab:app_comment_pt_sentiment} and~\ref{tab:app_comment_pt_framing}). Unlike the post-level analysis where Russia violated parallel trends for framing, the audience response data satisfied the parallel trends assumption across \textit{all} control groups (Russia $p=0.615$), allowing us to include all three countries in the analysis.
+
+\begin{table}[h]
+\centering
+\caption{Comment Parallel Test Results (Sentiment)}
+\begin{tabular}{llcl}
+\toprule
+\textbf{Comparison} & \textbf{Control} & \textbf{P-value} & \textbf{Verdict} \\
+\midrule
+P1$\rightarrow$P2 & China & 0.51 & Valid \\
+P1$\rightarrow$P2 & Iran & 0.20 & Valid \\
+P1$\rightarrow$P2 & Russia & 0.61 & Valid \\
+\addlinespace
+P2$\rightarrow$P3 & China & 0.33 & Valid \\
+P2$\rightarrow$P3 & Iran & 0.39 & Valid \\
+P2$\rightarrow$P3 & Russia & 0.40 & Valid \\
+\bottomrule
+\end{tabular}
+\label{tab:app_comment_pt_sentiment}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Comment Parallel Test Results (Framing)}
+\begin{tabular}{llcl}
+\toprule
+\textbf{Comparison} & \textbf{Control} & \textbf{P-value} & \textbf{Verdict} \\
+\midrule
+P1$\rightarrow$P2 & China & 0.57 & Valid \\
+P1$\rightarrow$P2 & Iran & 0.34 & Valid \\
+P1$\rightarrow$P2 & Russia & 0.62 & Valid \\
+\addlinespace
+P2$\rightarrow$P3 & China & 0.32 & Valid \\
+P2$\rightarrow$P3 & Iran & 0.92 & Valid \\
+P2$\rightarrow$P3 & Russia & 0.50 & Valid \\
+\bottomrule
+\end{tabular}
+\label{tab:app_comment_pt_framing}
+\end{table}
+
+\subsection{Structuring of Discourse: Communities and Edges}
+Table~\ref{tab:app_comment_structure} details the distribution of framing within comment-derived knowledge graphs. The analysis reveals a persistent structural shift:
+\begin{itemize}
+    \item \textbf{Community Level}: DIPLOMACY-oriented communities doubled in P2 (28.6\%) and remained elevated in P3 (17.5\%). Notably, HUMANITARIAN communities surged in P3 (10.8\%), indicating a shift to human rights issues rather than returning to pure security threats.
+    \item \textbf{Edge Level}: Threat-oriented relationships collapsed in P2 (-16.9 pp) and only partially recovered in P3, while DIPLOMACY edges remained elevated relative to pre-summit levels (P1: 15.9\% $\rightarrow$ P3: 19.7\%), confirming the structural persistence of engagement narratives.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Structural Framing Distribution in Comment Networks}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Frame} & \textbf{P1} & \textbf{P2} & \textbf{P3} \\
+\midrule
+\multicolumn{4}{l}{\textit{Community-Level}} \\
+Count ($N$) & 746 & 231 & 371 \\
+THREAT & 18.6\% & 11.3\% & 12.1\% \\
+DIPLOMACY & 13.8\% & \textbf{28.6\%} & 17.5\% \\
+HUMANITARIAN & 5.4\% & 4.8\% & \textbf{10.8\%} \\
+NEUTRAL & 60.2\% & 51.9\% & 58.0\% \\
+\midrule
+\multicolumn{4}{l}{\textit{Edge-Level}} \\
+Count ($N$) & 10,730 & 3,249 & 4,522 \\
+THREAT & 29.1\% & 12.2\% & 18.6\% \\
+DIPLOMACY & 15.9\% & \textbf{22.0\%} & 19.7\% \\
+HUMANITARIAN & 3.8\% & 1.9\% & \textbf{6.5\%} \\
+NEUTRAL & 45.1\% & 58.3\% & 48.5\% \\
+\bottomrule
+\end{tabular}
+\label{tab:app_comment_structure}
+\end{table}
+
+
+\section{Cross-LLM Validation}
+\label{app:cross_llm}
+
+To ensure that our framing classifications are robust across different LLM families and model sizes, we validated our primary classifier (GPT-4o-mini) against multiple alternative models. GPT-4o-mini was selected as the primary classifier based on its strong agreement with human gold labels (85.0\% accuracy, Cohen's $\kappa$ = 0.79, $N=500$). We then tested cross-model consistency by comparing other LLMs against GPT-4o-mini predictions on a stratified sample of 500 posts.
+\begin{table}[h!]
+\centering
+\caption{Cross-LLM Validation: Agreement with GPT-4o-mini ($N=500$)}
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lcc}
+\toprule
+\textbf{Model} & \textbf{Agreement (\%)} & \textbf{Cohen's $\kappa$} \\
+\midrule
+GPT-4o & 85.7\% & 0.78 \\
+Claude Sonnet 4.5 & 84.0\% & 0.76 \\
+Claude Haiku 4.5 & 81.6\% & 0.73 \\
+Llama 3.3 70B & 81.5\% & 0.71 \\
+Llama 3.1 8B & 75.3\% & 0.62 \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize Primary: GPT-4o-mini (85.0\% accuracy vs. human labels, $\kappa$=0.79)} \\
+\end{tabular}
+}
+\label{tab:cross_llm}
+\end{table}
+
+Table~\ref{tab:cross_llm} presents the agreement metrics. GPT-4o achieved the highest agreement at 85.7\% ($\kappa$ = 0.78), followed closely by Claude Sonnet 4.5 at 84.0\% ($\kappa$ = 0.76), Claude Haiku 4.5 at 81.6\% ($\kappa$ = 0.73), and Llama 3.3 70B at 81.5\% ($\kappa$ = 0.71). This high cross-family consistency, particularly between models from different developers and architectures (OpenAI, Anthropic, and Meta), provides strong evidence that our classification results reflect objective discourse patterns rather than model-specific artifacts.
+
+\subsection{Qualitative Error Analysis}
+\label{app:error_analysis}
+Table~\ref{tab:app_error_examples} provides qualitative examples of classification disagreements between human annotators and the LLM. The analysis highlights two primary sources of error: (1) Over-application of the ``factual reporting = NEUTRAL'' heuristic to diplomatic events, and (2) Over-sensitivity of the ``individual harm = HUMANITARIAN'' rule to keywords like ``protesters'' or ``defectors'' even when the primary framing is not humanitarian.
+
+\begin{table*}[h]
+\centering
+\small
+\caption{Examples of Human-LLM Classification Disagreements}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.8cm} c c >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Post Title} & \textbf{Human} & \textbf{LLM} & \textbf{LLM Reasoning (Summary)} \\
+\midrule
+\multicolumn{4}{l}{\textit{Type 1: Factual Reporting vs. Diplomatic Action}} \\
+\addlinespace[0.3em]
+Trump calls off planned Singapore summit & DIP & NEU & Classified as a ``factual report'' about an event cancellation without explicit government action. \\
+\addlinespace[0.5em]
+Kim Jong Un received an `excellent' letter from Trump & DIP & NEU & Viewed as a report about a letter rather than a significant diplomatic interaction. \\
+\addlinespace[0.5em]
+Tillerson in Beijing set to talk on North Korea & DIP & NEU & Interpreted as a report on travel plans rather than a substantive diplomatic engagement. \\
+\addlinespace[0.5em]
+North Korea cuts ICBMs out of military parade & DIP & NEU & Failed to recognize the parade modification as a deliberate diplomatic signal of de-escalation. \\
+\addlinespace[0.5em]
+South Korea's Leader Credits Trump for North Korea Talks & DIP & NEU & Characterized as a neutral report on a leader's statement rather than an act of diplomatic recognition. \\
+\midrule
+\multicolumn{4}{l}{\textit{Type 2: Keyword Sensitivity (Individual Harm)}} \\
+\addlinespace[0.3em]
+Anonymous Hacks China... Students Trapped & THR & HUM & Focus on ``Students trapped'' outweighed the military/cyber threat context. \\
+\addlinespace[0.5em]
+Russia delivered 12.1 metric tons aid to Syria & DIP & HUM & Interpreted ``aid delivery'' as a humanitarian act rather than a state-led diplomatic move. \\
+\addlinespace[0.5em]
+Facebook Blocks \$200K Donation To Iran Quake Victims Because Sanctions & NEU & HUM & Focus on ``Quake Victims'' overrode the primary context of corporate compliance with sanctions. \\
+\addlinespace[0.5em]
+North Korea defectors launch 'birthday' balloons across DMZ & NEU & HUM & The keyword ``defectors'' triggered a Humanitarian classification despite the political nature of the act. \\
+\addlinespace[0.5em]
+Otto Warmbier: Parents of man tortured in North Korea condemn Trump & NEU & HUM & The mention of ``tortured'' led to a Humanitarian label, missing the domestic political reaction frame. \\
+\bottomrule
+\end{tabularx}
+\label{tab:app_error_examples}
+\end{table*}
+
+
+\section{Temporal Trend Visualizations}
+\label{app:trend_figures}
+
+Figures~\ref{fig:app_sentiment_trends} and~\ref{fig:app_framing_trends} present the monthly time-series trends of sentiment and framing scores across all countries in our study. These visualizations provide additional context for the Difference-in-Differences analyses presented in the main text, allowing visual inspection of pre-treatment parallel trends and post-treatment divergence.
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/fig6_sentiment_trends.pdf}
+\caption{Monthly Sentiment Score Trends: NK vs. Control Groups. Vertical dashed lines mark key diplomatic events: the green line indicates the Singapore Summit (June 2018), and the red line indicates the Hanoi Summit (February 2019).}
+\label{fig:app_sentiment_trends}
+\end{figure*}
+
+\begin{figure*}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/fig2_framing_trends.pdf}
+\caption{Monthly Framing Score Trends: NK vs. Control Groups. Vertical dashed lines mark key diplomatic events: the green line indicates the Singapore Summit (June 2018), and the red line indicates the Hanoi Summit (February 2019).}
+\label{fig:app_framing_trends}
+\end{figure*}

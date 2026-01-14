@@ -1,0 +1,33 @@
+\section{Introduction}
+Public opinion toward foreign adversaries is shaped not only by objective events but also by how those events are discussed and interpreted in public discourse~\cite{baum2015war,entman2004}.
+In particular, high-stakes diplomatic summits function as salient narrative moments, drawing widespread attention and prompting shifts in how adversary states are evaluated, debated, and framed online~\cite{wapo2018historic}.
+Understanding whether such events produce lasting changes in public discourse or are merely short-lived emotional reactions remains an open empirical question.
+Prior research on public opinion and foreign policy has largely focused on survey-based measures of approval or sentiment, often emphasizing immediate affective responses to international crises~\cite{kertzer2017bottom, tomz2020public}.
+While prior work captures important emotional dynamics, it provides limited insight into how \textit{narrative structures} evolve over time in participatory online environments, where discourse is not only emotional but also relational and structural. Focusing exclusively on sentiment, consequently, risks overlooking broader discourse dynamics.
+
+Recent work in computational social science has begun addressing this gap by applying quasi-experimental designs to social media data, enabling stronger causal inference about the effects of political events~\cite{kumarswamy2025,horta2023deplatforming,trujillo2022make,chandrasekharan2017you}. We extend this methodological advance to the domain of international relations. 
+In this study, we argue that evaluating the public impact of diplomacy requires examining both \textit{content} and \textit{structure} in online discourse. We distinguish between two complementary dimensions: (1) content-level change, reflected in sentiment and framing, and (2) structural change, reflected in how narratives are interconnected within discourse networks. Sentiment captures affective valence, whereas framing captures how an adversary is positioned (such as a military threat or a negotiation partner) within public narratives. These dimensions need not evolve in tandem, and disentangling them is crucial for understanding the broader consequences of diplomatic engagement.
+
+We examine these dynamics through the case of U.S.-North Korea summit diplomacy between 2017 and 2019. The Singapore Summit marked an unprecedented moment of diplomatic engagement between the two countries, while the subsequent Hanoi Summit ended without agreement.
+Together, these events provide a natural contrast between diplomatic success and failure, allowing us to examine not only immediate shifts in discourse but also whether earlier narrative changes persist following subsequent setbacks. While our causal identification is defined at the post level, we further examine whether the observed shifts are reflected in highly visible audience responses, which play a key role in participatory discourse on Reddit. To the best of our knowledge, this is the first study to apply causal inference methods to this domain. Specifically, we analyze how diplomatic events reshape both content-level framing and structural organization of online discourse toward an adversary nation.
+In particular, we investigate the following research questions:
+\begin{itemize}
+    \item \textbf{RQ1a (Content Change)}: How do high-stakes diplomatic summits causally affect sentiment and framing toward North Korea in online discourse?
+    \item \textbf{RQ1b (Asymmetric Persistence)}: Do the effects of successful diplomacy exhibit asymmetric persistence, such that subsequent diplomatic failure does not fully reverse earlier gains?
+    \item \textbf{RQ2 (Structural Reorganization)}: How do these diplomatic events restructure the organization of online discourse, as reflected in changes to discourse networks and narrative connectivity?
+    \item \textbf{RQ3 (Audience Propagation)}: Do framing shifts observed in agenda-setting posts propagate to highly visible audience responses (comments)?
+    \item \textbf{RQ4 (Methodological Validity)}: To what extent can LLM-based framing classification align with human expert judgments in geopolitical discourse analysis?
+\end{itemize}
+We analyze Reddit discussions from 2017--2019 using a quasi-experimental analysis, called the Difference-in-Difference (DiD)~\cite{abadie2005semiparametric} design with multiple control countries to isolate the effects of summit diplomacy.
+To measure discourse at scale, we use a validated Codebook LLM framework
+for framing classification and integrate it with graph-based network analysis~\cite{edge2024graphrag} to capture structural reorganization in narrative connectivity. 
+
+Our key findings indicate that: (1) framing shifted significantly from threat-oriented to diplomacy-oriented following the Singapore Summit, while post-level sentiment effects were transient; and (2) after the Hanoi failure, only 39\% of the framing gains reverted, a pattern consistent with asymmetric persistence. Beyond this case, our results suggest how high-salience diplomatic events can durably reorganize narrative structures in participatory online discourse.
+By integrating content-level and structural analyses, this study contributes to computational social science in two primary ways:
+\begin{enumerate}
+    \item \textbf{Causal Distinction between Sentiment and Framing:} We provide causal evidence that diplomatic summits significantly reshape how a foreign adversary is framed, illustrating dynamics that are distinct from transient sentiment responses.
+    \item \textbf{Asymmetric Persistence:} We identify a pattern where framing changes are only partially reversed after diplomatic failure, whereas sentiment fully reverts (a phenomenon we term asymmetric persistence).
+\end{enumerate}
+Additionally, we introduce a methodological framework that integrates causal inference with LLM-based measurement and graph-based discourse analysis, and validates these findings using audience response data.
+
+

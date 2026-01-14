@@ -1,0 +1,202 @@
+% Main LaTeX file - ICWSM 2025 Paper
+% Based on official AAAI/ICWSM template
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai25}  % DO NOT CHANGE THIS (use submission for anonymous)
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
+
+% Additional allowed packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{subfig} % For subfloat figures
+\usepackage{xcolor}
+% \usepackage{stfloats} % Allow figure* at bottom
+
+% Checklist macros
+\newcommand{\answerYes}[1]{\textcolor{blue}{#1}} 
+\newcommand{\answerNo}[1]{\textcolor{teal}{#1}} 
+\newcommand{\answerNA}[1]{\textcolor{gray}{#1}} 
+\newcommand{\answerTODO}[1]{\textcolor{red}{#1}} 
+
+% PDF Info
+\pdfinfo{
+/Title (Summit Diplomacy and Social Media Framing)
+/Author (Anonymous Submission)
+/TemplateVersion (2025.1)
+}
+
+\setcounter{secnumdepth}{0} % No section numbers
+
+% Title - Must be in Title Case
+\title{How Diplomacy Reshapes Online Discourse: \\
+Asymmetric Persistence in Online Framing of North Korea}
+
+% For anonymous submission
+\author{
+    Anonymous Submission
+}
+\affiliations{
+    
+}
+\newif\ifcomment
+\commenttrue
+% \commentfalse
+\ifcomment
+\newcommand{\mohit}[1]{{\bf \textcolor{red}{Mohit: #1}}}
+\newcommand{\jun}[1]{{\bf \textcolor{blue}{Jun: #1}}}
+\newcommand{\hoonbae}[1]{{\bf \textcolor{orange}{hoonbae: #1}}}
+\else
+\newcommand{\mohit}[1]{}
+\newcommand{\jun}[1]{}
+\newcommand{\hoonbae}[1]{}
+\fi
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+% Optional: Links to code/data (uncomment for camera-ready)
+% \begin{links}
+%     \link{Code}{https://github.com/...}
+%     \link{Datasets}{https://...}
+% \end{links}
+
+% Main sections
+\input{sections/introduction}
+\input{sections/related_work}
+\input{sections/method}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+% Acknowledgments (uncomment for camera-ready)
+% \section*{Acknowledgments}
+% We thank...
+
+% References
+\bibliography{references}
+
+\section{Ethics Checklist}
+\begin{enumerate}
+\item For most authors...
+\begin{enumerate}
+    \item  Would answering this research question advance science without violating social contracts, such as violating privacy norms, perpetuating unfair profiling, exacerbating the socio-economic divide, or implying disrespect to societies or cultures?
+    \textcolor{blue} {Yes}
+  \item Do your main claims in the abstract and introduction accurately reflect the paper's contributions and scope?
+    \textcolor{blue} {Yes}
+   \item Do you clarify how the proposed methodological approach is appropriate for the claims made? 
+    \textcolor{blue} {Yes}
+   \item Do you clarify what are possible artifacts in the data used, given population-specific distributions?
+    \textcolor{green} {NA}
+  \item Did you describe the limitations of your work?
+    \textcolor{blue} {Yes}
+  \item Did you discuss any potential negative societal impacts of your work?
+    \textcolor{blue} {No, because we ideate on positive inference from our findings. }
+      \item Did you discuss any potential misuse of your work?
+    \textcolor{green} {NA}
+    \item Did you describe steps taken to prevent or mitigate potential negative outcomes of the research, such as data and model documentation, data anonymization, responsible release, access control, and the reproducibility of findings?
+    \textcolor{blue} {Yes}
+  \item Have you read the ethics review guidelines and ensured that your paper conforms to them?
+   \textcolor{blue} {Yes}
+\end{enumerate}
+
+\item Additionally, if your study involves hypotheses testing... \textcolor{green} {NA. Our study does not involve hypotheses testing.}
+
+\begin{enumerate}
+  \item Did you clearly state the assumptions underlying all theoretical results?
+    \textcolor{green} {NA}
+  \item Have you provided justifications for all theoretical results?
+    \textcolor{green} {NA}
+  \item Did you discuss competing hypotheses or theories that might challenge or complement your theoretical results?
+    \textcolor{green} {NA}
+  \item Have you considered alternative mechanisms or explanations that might account for the same outcomes observed in your study?
+    \textcolor{green} {NA}
+  \item Did you address potential biases or limitations in your theoretical framework?
+   \textcolor{green} {NA}
+  \item Have you related your theoretical results to the existing literature in social science?
+    \textcolor{green} {NA}
+  \item Did you discuss the implications of your theoretical results for policy, practice, or further research in the social science domain?
+    \textcolor{green} {NA}
+\end{enumerate}
+
+\item Additionally, if you are including theoretical proofs... \textcolor{green} {NA. Our study does not include theoretical proofs.}
+
+\begin{enumerate}
+  \item Did you state the full set of assumptions of all theoretical results?
+    \textcolor{green} {NA}
+	\item Did you include complete proofs of all theoretical results?
+    \textcolor{green} {NA}
+\end{enumerate}
+
+
+\item Additionally, if you ran machine learning experiments...
+\begin{enumerate}
+  \item Did you include the code, data, and instructions needed to reproduce the main experimental results (either in the supplemental material or as a URL)?
+    \textcolor{blue} {Yes. We include code and anonymized data via an anonymous repository link. \url{https://anonymous.4open.science/r/Asymmetric-Persistence-in-Online-Framing-of-North-Korea-F0F7}.}
+  \item Did you specify all the training details (e.g., data splits, hyperparameters, how they were chosen)?
+    \textcolor{green} {NA. We use a pre-trained LLM (GPT-4o-mini) in a zero-shot setting.}
+     \item Did you report error bars (e.g., with respect to the random seed after running experiments multiple times)?
+    \textcolor{blue} {Yes. We report 95\% confidence intervals for all DiD estimates.}
+	\item Did you include the total amount of compute and the type of resources used (e.g., type of GPUs, internal cluster, or cloud provider)?
+    \textcolor{blue} {Yes. We specify the use of OpenAI API (GPT-4o-mini) services.}
+     \item Do you justify how the proposed evaluation is sufficient and appropriate to the claims made? 
+    \textcolor{blue} {Yes. We validate our LLM classification against human expert annotations.}
+     \item Do you discuss what is ``the cost`` of misclassification and fault (in)tolerance?
+    \textcolor{green} {NA}
+  
+\end{enumerate}
+
+\item Additionally, if you are using existing assets (e.g., code, data, models) or curating/releasing new assets, \textbf{without compromising anonymity}...
+\begin{enumerate}
+  \item If your work uses existing assets, did you cite the creators?
+    \textcolor{blue} {Yes}
+  \item Did you mention the license of the assets?
+    \textcolor{green} {NA}
+  \item Did you include any new assets in the supplemental material or as a URL?
+    \textcolor{blue} {Yes. We include an anonymous GitHub link to the dataset in this submission. \url{https://anonymous.4open.science/r/Asymmetric-Persistence-in-Online-Framing-of-North-Korea-F0F7}.}
+  \item Did you discuss whether and how consent was obtained from people whose data you're using/curating?
+    \textcolor{green} {NA}
+  \item Did you discuss whether the data you are using/curating contains personally identifiable information or offensive content?
+    \textcolor{blue} {Yes}
+\item If you are curating or releasing new datasets, did you discuss how you intend to make your datasets FAIR?
+\textcolor{blue} {Yes, we are committed to abide by FAIR principles when sharing our dataset upon paper acceptance.}
+\item If you are curating or releasing new datasets, did you create a Datasheet for the Dataset? 
+\textcolor{blue} {Yes, we commit to creating a Datasheet when sharing our dataset upon paper acceptance.}
+\end{enumerate}
+
+\item Additionally, if you used crowdsourcing or conducted research with human subjects, \textbf{without compromising anonymity}... \textcolor{green} {NA. Our study does not involve research with human subjects/participants.}
+
+\begin{enumerate}
+  \item Did you include the full text of instructions given to participants and screenshots?
+    \textcolor{green} {NA}
+  \item Did you describe any potential participant risks, with mentions of Institutional Review Board (IRB) approvals?
+    \textcolor{green} {NA}
+  \item Did you include the estimated hourly wage paid to participants and the total amount spent on participant compensation?
+    \textcolor{green} {NA}
+   \item Did you discuss how data is stored, shared, and deidentified?
+   \textcolor{green} {NA}
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+\input{sections/appendix}
+
+\end{document}
