@@ -20,7 +20,8 @@ While these sentiment shifts are statistically significant, sentiment alone cann
 
 \begin{table}[t]
 \centering
-\caption{Sentiment Difference-in-Differences Results }
+\caption{Sentiment Difference-in-Differences Results}
+\resizebox{0.75\linewidth}{!}{
 \begin{tabular}{llcc}
 \toprule
 \textbf{Event} & \textbf{Control} & \textbf{DiD Est.} & \textbf{95\% CI} \\
@@ -35,6 +36,7 @@ Hanoi & China & -0.11*** & [-0.14, -0.08] \\
 \bottomrule
 \multicolumn{4}{l}{\footnotesize *$p<0.05$, **$p<0.01$, ***$p<0.001$} \\
 \end{tabular}
+}
 \label{tab:did_sentiment_summary}
 \end{table}
 
@@ -53,6 +55,7 @@ Figure~\ref{fig:did} visualizes the DiD estimates.
 \begin{table}[t]
 \centering
 \caption{Framing Difference-in-Differences Results}
+\resizebox{0.75\linewidth}{!}{
 \begin{tabular}{llcc}
 \toprule
 \textbf{Event} & \textbf{Control} & \textbf{DiD Est.} & \textbf{95\% CI} \\
@@ -65,9 +68,10 @@ Hanoi & China & -0.56* & [-1.09, -0.03] \\
 & Russia & -0.54 & [-1.15, 0.06] \\
 \bottomrule
 \multicolumn{4}{l}{\footnotesize * $p<0.05$, ** $p<0.01$, *** $p<0.001$} \\
-\multicolumn{4}{l}{\footnotesize Russia excluded from P1$\rightarrow$P2 due to parallel trends violation.} \\
+% \multicolumn{4}{l}{\footnotesize Russia excluded from P1$\rightarrow$P2 due to parallel trends violation.} \\
 \end{tabular}
 \label{tab:did_framing_summary}
+}
 \end{table}
 
 The Singapore Summit led to a pronounced shift toward diplomacy-oriented framing
@@ -104,7 +108,7 @@ Table~\ref{tab:ratchet_validation} presents bootstrap validation results across 
 \small
 \setlength{\tabcolsep}{3pt}
 \caption{Asymmetric Persistence Validation: Unlike sentiment, framing shifts exhibit asymmetric persistence (Ratio $\ll$ 1.0). Content, Edge, and Community refer to framing metrics at the post, relationship, and cluster levels, respectively.}
-\resizebox{\columnwidth}{!}{
+\resizebox{0.9\linewidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Metric} & \textbf{$\Delta$(P1$\to$P2)} & \textbf{$\Delta$(P2$\to$P3)} & \textbf{Ratio} & \textbf{95\% CI} \\
@@ -164,6 +168,7 @@ toward pre-summit levels, mirroring the transient pattern observed at the post l
 \begin{table}[t]
 \centering
 \caption{Comment Sentiment Difference-in-Differences Results}
+\resizebox{0.9\linewidth}{!}{
 \begin{tabular}{llcc}
 \toprule
 \textbf{Event} & \textbf{Control} & \textbf{DiD Est.} & \textbf{95\% CI} \\
@@ -178,6 +183,7 @@ Hanoi & China & -0.05 & [-0.18, 0.08] \\
 \bottomrule
 \multicolumn{4}{l}{\footnotesize *$p<0.05$, **$p<0.01$, ***$p<0.001$} \\
 \end{tabular}
+}
 \label{tab:comment_sentiment_did}
 \end{table}
 
@@ -189,7 +195,7 @@ In particular, while sentiment is fleeting, structural framing persists—a patt
 \small
 \setlength{\tabcolsep}{3pt}
 \caption{Comment Ratchet Effect Validation: Unlike framing (which ratchets), sentiment exhibits full reversion (Ratio $>$ 1.0) when measured by monthly aggregation.}
-\resizebox{\columnwidth}{!}{
+\resizebox{0.95\linewidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Metric} & \textbf{$\Delta$(P1$\to$P2)} & \textbf{$\Delta$(P2$\to$P3)} & \textbf{Ratio} & \textbf{95\% CI} \\
@@ -212,6 +218,7 @@ and does not statistically revert to pre-summit levels following the diplomatic 
 \begin{table}[t]
 \centering
 \caption{Comment Framing Difference-in-Differences Results}
+\resizebox{0.9\linewidth}{!}{
 \begin{tabular}{llcc}
 \toprule
 \textbf{Event} & \textbf{Control} & \textbf{DiD Est.} & \textbf{95\% CI} \\
@@ -226,6 +233,7 @@ Hanoi & China & -0.15 & [-0.63, 0.33] \\
 \bottomrule
 \multicolumn{4}{l}{\footnotesize *$p<0.05$, **$p<0.01$, ***$p<0.001$} \\
 \end{tabular}
+}
 \label{tab:comment_framing_did}
 \end{table}
 
@@ -236,16 +244,42 @@ and suggests continuity in how diplomatic engagement reshapes narrative orientat
 
 \textbf{Structural-Level Audience Responses: }
 We next assess whether these content-level patterns are reflected
-in the structure of audience discourse networks.
-Graph-based analyses of comment networks indicate that the post-Hanoi period
-is characterized not by a return to purely confrontational structures,
+in the structure of audience discourse networks. Table~\ref{tab:app_comment_structure} shows the graph-based analyses of comment networks, indicating that the post-Hanoi period is characterized not by a return to purely confrontational structures,
 but by a mixed configuration in which diplomatic connections remain salient
-alongside re-emerging threats
-(detailed structural metrics are provided in Appendix Table~\ref{tab:app_comment_structure}).
+alongside re-emerging threats.
+% (detailed structural metrics are provided in Table~\ref{tab:app_comment_structure}).
 In particular, diplomacy-oriented edges remain elevated relative to pre-summit baselines,
 while humanitarian and sanctions-related themes expand.
 Together, these patterns point to a reconfiguration of audience discourse
 toward sustained, if contested, engagement rather than full reversion.
+
+\begin{table}[h]
+\centering
+\caption{Structural Framing Distribution in Comment Networks}
+\resizebox{0.85\linewidth}{!}{
+\begin{tabular}{lccc}
+\toprule
+\textbf{Frame} & \textbf{P1} & \textbf{P2} & \textbf{P3} \\
+\midrule
+\multicolumn{4}{l}{\textit{Community-Level}} \\
+THREAT & 18.6\% & 11.3\% & 12.1\% \\
+DIPLOMACY & 13.8\% & \textbf{28.6\%} & 17.5\% \\
+HUMANITARIAN & 5.4\% & 4.8\% & \textbf{10.8\%} \\
+NEUTRAL & 60.2\% & 51.9\% & 58.0\% \\
+Count ($N$) & 746 & 231 & 371 \\
+\midrule
+\multicolumn{4}{l}{\textit{Edge-Level}} \\
+
+THREAT & 29.1\% & 12.2\% & 18.6\% \\
+DIPLOMACY & 15.9\% & \textbf{22.0\%} & 19.7\% \\
+HUMANITARIAN & 3.8\% & 1.9\% & \textbf{6.5\%} \\
+NEUTRAL & 45.1\% & 58.3\% & 48.5\% \\
+Count ($N$) & 10,730 & 3,249 & 4,522 \\
+\bottomrule
+\end{tabular}
+}
+\label{tab:app_comment_structure}
+\end{table}
 
 \textbf{Summary: }
 Taken together, audience-level analyses reinforce the post-level conclusions
@@ -273,6 +307,7 @@ Reliability was consistent across all framing categories, ranging from 79.6\% (D
 \small
 \setlength{\tabcolsep}{4pt}
 \caption{LLM vs.\ Human (Consensus) Validation Metrics}
+\resizebox{0.9\linewidth}{!}{
 \begin{tabular}{lcccc}
 \toprule
 \textbf{Frame} & \textbf{Prec.} & \textbf{Rec.} & \textbf{F1} & \textbf{Support} \\
@@ -287,6 +322,7 @@ DIPLOMACY & 0.88 & 0.77 & 0.82 & 108 \\
 \textbf{Macro Avg.} & 0.83 & 0.83 & \textbf{0.83} &  \\
 \bottomrule
 \end{tabular}
+}
 \label{tab:llm_human_metrics}
 \end{table}
 

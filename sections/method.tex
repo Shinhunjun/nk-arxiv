@@ -12,6 +12,7 @@
 \centering
 \setlength{\tabcolsep}{3pt}
 \caption{Dataset Overview}
+\resizebox{0.75\linewidth}{!}{
 \begin{tabular}{llrr}
 \hline
 \textbf{Group} & \textbf{Topic} & \textbf{Posts} & \textbf{Comments} \\
@@ -25,6 +26,7 @@ Control 3 & Russia & 8,570 & 81,883 \\
 \hline
 \end{tabular}
 \label{tab:dataset}
+}
 \end{table}
 We selected control countries exposed to contemporaneous high-salience geopolitical events but not subject to U.S.--North Korea summit diplomacy: China (trade conflict), Iran (post-JCPOA tensions), and Russia (U.S. election interference).
 Using multiple controls allows us to assess robustness across different confounding structures. However, the validity of a DiD design rests on the parallel trends assumption: treated and control groups must exhibit similar trends in the outcome variable prior to the intervention. We verified this assumption for all groups (see Appendix Tables~\ref{tab:app_pt_sentiment} and~\ref{tab:app_pt_framing}). For sentiment, all three control groups satisfied parallel trends ($p > 0.05$ for all comparisons). For framing, China and Iran satisfied parallel trends, while Russia exhibited a significant violation for P1$\rightarrow$P2 ($p = 0.01$), likely reflecting differential political attention to Russia during the pre-treatment period, hence, 
